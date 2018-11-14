@@ -7,4 +7,10 @@ class HomepageTest < CapybaraTestCase
     assert page.has_content?("Welcome!")
     assert_equal 200, page.status_code
   end
+
+  def test_site_can_give_error_to_wrong_link
+    visit '/blog'
+
+    assert_equal 404, page.status_code
+  end
 end
